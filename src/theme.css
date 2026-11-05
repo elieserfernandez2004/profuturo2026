@@ -1,0 +1,55 @@
+:root {
+  --ion-color-primary: #0f3d3e;
+  --ion-color-primary-rgb: 15, 61, 62;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #0d3637;
+  --ion-color-primary-tint: #275051;
+
+  --ion-color-secondary: #f2a541;
+  --ion-color-secondary-rgb: 242, 165, 65;
+  --ion-color-secondary-contrast: #1d1d1d;
+  --ion-color-secondary-shade: #d59139;
+  --ion-color-secondary-tint: #f3ae54;
+
+  --ion-font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --chasqui-ai-bg: #eef6f6;
+  --chasqui-me-bg: #fff4e3;
+  --chasqui-muted: #5b6b6b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --chasqui-ai-bg: #1d3233;
+    --chasqui-me-bg: #3a2d18;
+    --chasqui-muted: #a9b8b8;
+  }
+}
+
+.muted { color: var(--chasqui-muted); font-size: 0.9em; }
+.big-emoji { font-size: 2.2rem; line-height: 1; }
+.pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 600;
+}
+.pill.ok { background: #d9f2e3; color: #11613a; }
+.pill.warn { background: #fdecc8; color: #7a4d00; }
+.pill.bad { background: #fadcdc; color: #8a1c1c; }
+.pill.info { background: #dcebf5; color: #164a6e; }
+
+.bubble {
+  border-radius: 14px; padding: 10px 12px; margin: 8px 0; white-space: pre-wrap; line-height: 1.45;
+}
+.bubble.ai { background: var(--chasqui-ai-bg); }
+.bubble.me { background: var(--chasqui-me-bg); margin-left: 15%; }
+.bubble .meta { margin-top: 6px; font-size: 0.72rem; color: var(--chasqui-muted); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 4px; }
+.mastery { display: inline-block; min-width: 46px; text-align: center; border-radius: 8px; padding: 2px 6px; font-weight: 700; font-size: 0.8rem; }
+.m-none { background: #e7e7e7; color: #555; }
+.m-low { background: #fadcdc; color: #8a1c1c; }
+.m-mid { background: #fdecc8; color: #7a4d00; }
+.m-high { background: #d9f2e3; color: #11613a; }
+table.dash { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
+table.dash th, table.dash td { border-bottom: 1px solid rgba(127,127,127,.25); padding: 6px 4px; text-align: center; }
+table.dash th:first-child, table.dash td:first-child { text-align: left; }
+.lesson-body p { line-height: 1.55; }
