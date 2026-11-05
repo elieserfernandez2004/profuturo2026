@@ -37,15 +37,17 @@ export function hintMessages(opts: {
         lessonContext(lesson),
       ].join('\n'),
     },
+    // ejemplo corto: los modelos pequeños imitan mejor el formato con un ejemplo
+    { role: 'user', content: 'Ejercicio: 3 + 4 × 2\nEl estudiante respondió: 14\nPista base: Recuerda qué operación se hace primero.' },
+    { role: 'assistant', content: '¡Buen intento! Antes de sumar, piensa: ¿qué operación se resuelve primero, la suma o la multiplicación?' },
     {
       role: 'user',
       content: [
         `Ejercicio: ${exercise.prompt}`,
-        `Respuesta del estudiante: "${studentAnswer || '(no respondió)'}" (es incorrecta o pidió ayuda).`,
-        misconceptionLabel ? `Posible error detectado: ${misconceptionLabel}.` : '',
-        `Pista de referencia del docente: ${exercise.hints[Math.min(hintLevel, 3) - 1]}`,
-        levelDesc,
-        'Empieza reconociendo el esfuerzo con pocas palabras.',
+        `El estudiante respondió: ${studentAnswer || '(pidió ayuda)'}`,
+        misconceptionLabel ? `Error detectado: ${misconceptionLabel}.` : '',
+        `Pista base: ${exercise.hints[Math.min(hintLevel, 3) - 1]}`,
+        `Escribe la pista para el estudiante, hablándole de "tú", en máximo 2 frases y terminando con una pregunta. ${levelDesc}`,
       ]
         .filter(Boolean)
         .join('\n'),

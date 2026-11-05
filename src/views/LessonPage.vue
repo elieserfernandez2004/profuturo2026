@@ -191,7 +191,10 @@ async function hint(misLabel?: string, misHint?: string) {
       }),
       { onToken: (t) => (msg.text = t), maxTokens: 160 },
     )
-    if (!out || leaksAnswer(out, ex.value.answer, ex.value.prompt)) {
+    if (!out || out.length < 25 || /el estudiante/i.test(out)) {
+      // respuesta pobre del modelo → pista escrita por docentes
+      Object.assign(msg, { text: fallback, source: 'docente' })
+    } else if (leaksAnswer(out, ex.value.answer, ex.value.prompt)) {
       // guardarraíl: la IA iba a "hacer la tarea" → pista segura
       Object.assign(msg, { text: fallback, guarded: true, source: 'docente' })
     }

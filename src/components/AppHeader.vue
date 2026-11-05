@@ -5,11 +5,11 @@
         <ion-back-button v-if="back" :default-href="back" text="" />
       </ion-buttons>
       <ion-title>
-        <span class="brand"><span class="brandmark">🌱</span><span v-if="!title">semilla<em>.</em></span><span v-else>{{ title }}</span></span>
+        <span class="brand" :style="title ? 'font-size: 1.05rem' : ''"><span v-if="!title" class="brandmark">🌱</span><span v-if="!title">semilla<em>.</em></span><span v-else>{{ title }}</span></span>
       </ion-title>
       <ion-buttons slot="end">
         <span class="pill" :class="net.online ? 'info' : 'ok'" :title="net.online ? 'Con red' : 'Sin red: todo sigue funcionando'">
-          {{ net.online ? '📶 En línea' : '✈️ Sin red' }}
+          {{ net.online ? '📶' : '✈️ Sin red' }}
         </span>
         <span class="pill" :class="aiPill.cls" style="margin-left: 6px" @click="$router.push('/settings')">{{ aiPill.text }}</span>
       </ion-buttons>
