@@ -72,3 +72,7 @@ Proyecto creado desde cero durante el hackathon (3–5 de noviembre de 2026). Ve
 ## Licencia
 
 Código: **MIT**. Contenidos y documentación: **CC BY-NC-SA 3.0**. Ver [LICENSE](LICENSE).
+
+## Equipo
+
+- **Eliecer Fernandez** — [@elieserfernandez2004](https://github.com/elieserfernandez2004)
