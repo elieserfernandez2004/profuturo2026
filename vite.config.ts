@@ -19,8 +19,8 @@ export default defineConfig({
       injectRegister: 'auto',
       includeAssets: ['icon.svg'],
       manifest: {
-        name: 'Chasqui · Tutor IA sin conexión',
-        short_name: 'Chasqui',
+        name: 'Semilla · Tutor IA sin conexión',
+        short_name: 'Semilla',
         description:
           'Tutor socrático con IA que funciona 100% en el dispositivo, sin internet. Hack4Edu 2026.',
         lang: 'es',
@@ -28,8 +28,8 @@ export default defineConfig({
         scope: './',
         display: 'standalone',
         orientation: 'any',
-        background_color: '#0f3d3e',
-        theme_color: '#0f3d3e',
+        background_color: '#fdfbf7',
+        theme_color: '#7141d8',
         icons: [
           { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icon-512.png', sizes: '512x512', type: 'image/png' },

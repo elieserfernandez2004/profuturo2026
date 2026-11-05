@@ -10,6 +10,10 @@ import '@ionic/vue/css/typography.css'
 import '@ionic/vue/css/padding.css'
 import '@ionic/vue/css/flex-utils.css'
 import '@ionic/vue/css/display.css'
+// tipografía empaquetada localmente (funciona sin internet)
+import '@fontsource/quicksand/500.css'
+import '@fontsource/quicksand/600.css'
+import '@fontsource/quicksand/700.css'
 import './theme.css'
 
 import { initSync } from './services/sync'
