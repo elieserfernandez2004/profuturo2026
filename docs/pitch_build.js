@@ -78,16 +78,16 @@ let s = pres.addSlide({ masterName: 'PORTADA', sectionTitle: 'Apertura' })
 s.addText('Semilla', { placeholder: 'title' })
 s.addText('Un tutor con IA que vive en el bolsillo.\nSin internet. Sin datos fuera del dispositivo.', { placeholder: 'body' })
 text(s, 'Hack4Edu 2026 · Modalidad innovadora', { x: 0.6, y: 4.35, w: 5, h: 0.3, fontSize: 14, color: C.background2 })
-;[['Reto 02', 'Aprender sin conexión'], ['Reto 04', 'Tutor sin respuestas'], ['Reto 07', 'IA que explica sus límites']].forEach(([a, b], i) => {
-  const y = 1.45 + i * 1.02
-  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 6.85, y, w: 2.65, h: 0.82, rectRadius: 0.16, fill: { color: C.accent1 }, line: { type: 'none' }, objectName: nm('reto') })
+;[['Reto 02', 'Aprender sin conexión'], ['Reto 04', 'Tutor sin respuestas'], ['Reto 07', 'IA que explica sus límites'], ['Reto 20', 'Ningún talento invisible']].forEach(([a, b], i) => {
+  const y = 0.95 + i * 0.92
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 6.85, y, w: 2.65, h: 0.78, rectRadius: 0.16, fill: { color: C.accent1 }, line: { type: 'none' }, objectName: nm('reto') })
   text(s, [
     { text: a + '  ·  Reto ProFuturo', options: { fontSize: 11, bold: true, color: C.background2, breakLine: true } },
     { text: b, options: { fontSize: 15, bold: true, color: C.background1 } },
-  ], { x: 7.05, y: y + 0.12, w: 2.35, h: 0.62 })
+  ], { x: 7.05, y: y + 0.1, w: 2.35, h: 0.6 })
 })
 iconCircle(s, '🌱', 0.6, 0.55, 0.75, C.accent1)
-s.addNotes(`(0:00–0:30) Hola, somos el equipo Semilla. Hoy, millones de niñas y niños estudian donde internet es lento, caro o no existe. Las herramientas de IA educativa que conocemos viven en la nube: sin conexión, no existen. Semilla es un tutor con inteligencia artificial que vive dentro del teléfono o la tablet. Responde a tres Retos ProFuturo: aprender sin conexión, un tutor que no da la respuesta y una IA que explica sus límites.`)
+s.addNotes(`(0:00–0:25) Hola, somos el equipo Semilla. Hoy, millones de niñas y niños estudian donde internet es lento, caro o no existe. Las herramientas de IA educativa que conocemos viven en la nube: sin conexión, no existen. Semilla es un tutor con inteligencia artificial que vive dentro del teléfono o la tablet. Responde a cuatro Retos ProFuturo: aprender sin conexión, un tutor que no da la respuesta, una IA que explica sus límites y que ningún talento pase desapercibido.`)
 
 // ═════ 2. Problema ═════
 pres.addSection({ title: 'Problema' })
@@ -105,27 +105,28 @@ stats.forEach(([big, desc, src], i) => {
   text(s, desc, { x: x + 0.25, y: 2.65, w: 2.4, h: 1.5, fontSize: 15 })
   text(s, src, { x: x + 0.25, y: 4.3, w: 2.4, h: 0.3, fontSize: 11, color: HEX.muted, italic: true })
 })
-s.addNotes(`(0:30–1:00) Según el Banco Mundial, el 70% de los niños de 10 años en países de ingresos bajos y medios no puede comprender un texto simple. La IA podría ayudar, pero los tutores con IA actuales necesitan internet permanente, cuestan por cada consulta y envían los datos de menores a servidores externos. Justo donde más falta hace, no llegan.`)
+s.addNotes(`(0:25–0:50) Según el Banco Mundial, el 70% de los niños de 10 años en países de ingresos bajos y medios no puede comprender un texto simple. La IA podría ayudar, pero los tutores con IA actuales necesitan internet permanente, cuestan por cada consulta y envían los datos de menores a servidores externos. Justo donde más falta hace, no llegan.`)
 
 // ═════ 3. Solución ═════
 pres.addSection({ title: 'Solución' })
 s = pres.addSlide({ masterName: 'CONTENIDO', sectionTitle: 'Solución' })
-s.addText('Semilla: tres respuestas en una sola app', { placeholder: 'title' })
+s.addText('Semilla: cuatro respuestas en una sola app', { placeholder: 'title' })
 const pillars = [
   ['📶', 'Reto 02 · Sin conexión', ['PWA instalable que funciona en modo avión', 'IA ejecutada en el propio dispositivo', 'Progreso local y sincronización por paquetes o al volver la red']],
   ['💡', 'Reto 04 · Tutor que no da la respuesta', ['Pistas progresivas en 3 niveles, según la edad', 'Detecta errores típicos (p. ej. sumar denominadores)', 'Guardarraíl que bloquea la solución si la IA la da']],
-  ['🕵️', 'Reto 07 · IA que explica sus límites', ['Detective de IA: alucinaciones, sesgos y fuentes inventadas', 'Cuándo NO usar IA y cómo proteger tus datos', 'Todo texto de IA va etiquetado y se puede reportar']],
+  ['🕵️', 'Reto 07 · IA que explica sus límites', ['Detective de IA: alucinaciones, sesgos y fuentes inventadas', 'Cuándo NO usar IA y cómo proteger tus datos', 'Todo texto de IA va etiquetado']],
+  ['🌟', 'Reto 20 · Ningún talento invisible', ['Jardín de talentos: acertijos, inventos, explicaciones', 'Reconocimiento entre pares e intereses', 'Señales para el docente, sin etiquetas ni notas']],
 ]
 pillars.forEach(([ic, title, items], i) => {
-  const x = 0.5 + i * 3.08
-  card(s, x, 1.3, 2.85, 3.6)
-  iconCircle(s, ic, x + 0.25, 1.5)
-  text(s, title, { x: x + 0.25, y: 2.25, w: 2.4, h: 0.6, fontSize: 16, bold: true, color: C.text2 })
-  text(s, items.map((t, j) => ({ text: t, options: { bullet: { indent: 14 }, breakLine: j < items.length - 1 } })), {
-    x: x + 0.25, y: 2.9, w: 2.45, h: 1.9, fontSize: 13, paraSpaceAfter: 5,
+  const x = 0.5 + i * 2.29
+  card(s, x, 1.3, 2.13, 3.65)
+  iconCircle(s, ic, x + 0.2, 1.48, 0.56)
+  text(s, title, { x: x + 0.2, y: 2.15, w: 1.8, h: 0.62, fontSize: 14, bold: true, color: C.text2 })
+  text(s, items.map((t, j) => ({ text: t, options: { bullet: { indent: 12 }, breakLine: j < items.length - 1 } })), {
+    x: x + 0.2, y: 2.82, w: 1.83, h: 2.05, fontSize: 12, paraSpaceAfter: 4,
   })
 })
-s.addNotes(`(1:00–1:45) Semilla une los tres retos. Primero, funciona sin conexión: se instala como app web y la IA corre en el propio dispositivo. Segundo, es un tutor que no hace la tarea: da pistas progresivas, detecta errores típicos como sumar los denominadores, y si la IA intenta dar la solución, un filtro la cambia por una pista. Tercero, enseña a usar la IA con pensamiento crítico: con el Detective de IA, niñas y niños descubren alucinaciones, sesgos y fuentes inventadas.`)
+s.addNotes(`(0:50–1:30) Semilla une cuatro retos. Primero, funciona sin conexión: se instala como app web y la IA corre en el propio dispositivo. Segundo, es un tutor que no hace la tarea: da pistas progresivas, detecta errores típicos como sumar los denominadores, y si la IA intenta dar la solución, un filtro la cambia por una pista. Tercero, enseña a usar la IA con pensamiento crítico: con el Detective de IA, niñas y niños descubren alucinaciones, sesgos y fuentes inventadas. Y cuarto, hace visibles talentos que las notas no muestran.`)
 
 // ═════ 4. Cómo funciona ═════
 s = pres.addSlide({ masterName: 'CONTENIDO', sectionTitle: 'Solución' })
@@ -145,7 +146,30 @@ steps.forEach(([ic, t, d], i) => {
   text(s, d, { x: x + 0.15, y: 3.05, w: 1.36, h: 1.5, fontSize: 12, align: 'center' })
   if (i < steps.length - 1) text(s, '›', { x: x + 1.64, y: 2.75, w: 0.22, h: 0.4, fontSize: 24, bold: true, color: C.accent1, align: 'center', valign: 'middle' })
 })
-s.addNotes(`(1:45–2:30) Así se usa: la app y el modelo se descargan una sola vez, con wifi o desde la red local de la escuela. Después, en modo avión, todo sigue funcionando. El estudiante resuelve; la corrección es exacta y no depende de la IA. Si se equivoca, la IA local le da una pista en forma de pregunta. Y la persona docente ve en su panel qué concepto necesita apoyo cada estudiante, y combina los datos de varias tablets sin internet, con un paquete que se comparte por Bluetooth o USB.`)
+s.addNotes(`(1:30–2:05) Así se usa: la app y el modelo se descargan una sola vez, con wifi o desde la red local de la escuela. Después, en modo avión, todo sigue funcionando. El estudiante resuelve; la corrección es exacta y no depende de la IA. Si se equivoca, la IA local le da una pista en forma de pregunta. Y la persona docente ve en su panel qué concepto necesita apoyo cada estudiante, y combina los datos de varias tablets sin internet, con un paquete que se comparte por Bluetooth o USB.`)
+
+// ═════ 4b. Reto 20 · Talentos ═════
+s = pres.addSlide({ masterName: 'CONTENIDO', sectionTitle: 'Solución' })
+s.addText('Que ningún talento pase desapercibido', { placeholder: 'title' })
+card(s, 0.5, 1.3, 4.35, 3.65)
+text(s, '🌻 Estudiante: “Mi jardín de talentos”', { x: 0.75, y: 1.45, w: 3.9, h: 0.35, fontSize: 15, bold: true, color: C.text2 })
+const acts = [['🧩', 'Acertijos', 'pensamiento lógico y perseverancia'], ['🎨', 'Inventa', 'retos abiertos: creatividad'], ['🗣️', 'Explica', 'con sus palabras: comunicación'], ['🤝', 'Reconoce', 'semillas entre pares: colaboración']]
+acts.forEach(([ic, t, d], i) => {
+  const y = 1.95 + i * 0.72
+  iconCircle(s, ic, 0.75, y, 0.52)
+  text(s, [{ text: t, options: { bold: true, breakLine: true } }, { text: d, options: { color: HEX.muted } }], { x: 1.42, y: y + 0.02, w: 3.25, h: 0.55, fontSize: 13 })
+})
+card(s, 5.1, 1.3, 4.4, 3.65, C.background2)
+text(s, '👩‍🏫 Docente: señales, no etiquetas', { x: 5.35, y: 1.45, w: 4.0, h: 0.35, fontSize: 15, bold: true, color: C.text2 })
+const principles = [
+  'Evidencias en palabras, con su origen: actividad, uso de la app, compañero o docente',
+  'Sin puntajes, rankings ni grupos por “capacidad”',
+  '“Sin señales” = sin oportunidad aún, no falta de talento',
+  'Ideas para personalizar según fortalezas e intereses: decide el docente',
+  'La IA local solo ve habilidades e intereses, nunca el nombre',
+]
+text(s, principles.map((t, j) => ({ text: t, options: { bullet: { indent: 12 }, breakLine: j < principles.length - 1 } })), { x: 5.35, y: 1.95, w: 3.95, h: 2.9, fontSize: 13, paraSpaceAfter: 6 })
+s.addNotes(`(2:05–2:45) El Reto 20 nos pide ver más allá de las notas. En Mi jardín de talentos, cada estudiante resuelve acertijos, inventa ideas, explica con sus palabras y regala semillas a compañeros que le ayudaron. Cada actividad genera una evidencia descrita en palabras, nunca una nota. La persona docente ve esas señales con su origen, suma lo que observa en clase y recibe ideas para personalizar. Sin etiquetas, sin rankings y sin decisiones automáticas: si no hay señales, es que aún no hubo oportunidad.`)
 
 // ═════ 5. IA ética ═════
 pres.addSection({ title: 'Ética' })
@@ -167,7 +191,7 @@ ethics.forEach(([ic, t, d], i) => {
   text(s, t, { x: x + 1.0, y: y + 0.14, w: 3.2, h: 0.32, fontSize: 15, bold: true, color: C.text2 })
   text(s, d, { x: x + 1.0, y: y + 0.47, w: 3.2, h: 0.55, fontSize: 12 })
 })
-s.addNotes(`(2:30–3:15) La ética no es un añadido, es la arquitectura. Como la IA corre en el dispositivo, los datos de los menores nunca salen. Solo usamos un apodo, y la familia puede borrarlo todo. Si un niño escribe su nombre completo o su teléfono, Semilla lo frena y le explica por qué. Cada respuesta indica si la escribió la IA o un docente. La IA no corrige ni da soluciones, y nada generado por IA llega al estudiante sin revisión docente. Seguimos los principios de UNICEF para una IA centrada en la infancia.`)
+s.addNotes(`(2:45–3:20) La ética no es un añadido, es la arquitectura. Como la IA corre en el dispositivo, los datos de los menores nunca salen. Solo usamos un apodo, y la familia puede borrarlo todo. Si un niño escribe su nombre completo o su teléfono, Semilla lo frena y le explica por qué. Cada respuesta indica si la escribió la IA o un docente. La IA no corrige ni da soluciones, y nada generado por IA llega al estudiante sin revisión docente. Seguimos los principios de UNICEF para una IA centrada en la infancia.`)
 
 // ═════ 6. Tecnología ═════
 pres.addSection({ title: 'Tecnología' })
@@ -202,7 +226,7 @@ s.addTable(rows, {
 text(s, 'Semilla detecta el equipo y elige el modelo. Nadie queda fuera: sin GPU, la app funciona igual con pistas escritas por docentes.', {
   x: 4.85, y: 3.65, w: 4.65, h: 0.75, fontSize: 13, italic: true, color: C.text2,
 })
-s.addNotes(`(3:15–3:50) Técnicamente es una PWA en Vue e Ionic. El modelo de lenguaje corre en el navegador con WebGPU, gracias a WebLLM. Semilla detecta el dispositivo y elige el modelo: tres mil millones de parámetros en un teléfono de gama alta como el Galaxy S26 Ultra, y modelos más pequeños en equipos modestos. Si no hay GPU, la app funciona igual con pistas escritas por docentes. Nadie queda fuera.`)
+s.addNotes(`(3:20–3:50) Técnicamente es una PWA en Vue e Ionic. El modelo de lenguaje corre en el navegador con WebGPU, gracias a WebLLM. Semilla detecta el dispositivo y elige el modelo: tres mil millones de parámetros en un teléfono de gama alta como el Galaxy S26 Ultra, y modelos más pequeños en equipos modestos. Si no hay GPU, la app funciona igual con pistas escritas por docentes. Nadie queda fuera.`)
 
 // ═════ 7. Impacto y mercado ═════
 pres.addSection({ title: 'Impacto' })
@@ -234,14 +258,14 @@ pres.addSection({ title: 'Cierre' })
 s = pres.addSlide({ masterName: 'CIERRE', sectionTitle: 'Cierre' })
 s.addText('Que el lugar donde naces no decida cuánto aprendes', { placeholder: 'title' })
 s.addText('Semilla lleva un tutor con IA, ético y sin conexión, a cada escuela.', { placeholder: 'body' })
-const close = [['📶', 'Sin internet'], ['🔒', 'Datos en el dispositivo'], ['💡', 'Pistas, no respuestas'], ['🕵️', 'Pensamiento crítico']]
+const close = [['📶', 'Sin internet'], ['🔒', 'Datos en el dispositivo'], ['💡', 'Pistas, no respuestas'], ['🕵️', 'Pensamiento crítico'], ['🌟', 'Talentos visibles']]
 close.forEach(([ic, t], i) => {
-  const x = 0.6 + i * 2.2
-  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y: 3.85, w: 2.0, h: 0.75, rectRadius: 0.16, fill: { color: C.accent1 }, line: { type: 'none' }, objectName: nm('cierre') })
-  text(s, `${ic}  ${t}`, { x: x + 0.12, y: 3.85, w: 1.8, h: 0.75, fontSize: 13, bold: true, color: C.background1, valign: 'middle', align: 'center' })
+  const x = 0.6 + i * 1.78
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y: 3.85, w: 1.64, h: 0.75, rectRadius: 0.16, fill: { color: C.accent1 }, line: { type: 'none' }, objectName: nm('cierre') })
+  text(s, `${ic}  ${t}`, { x: x + 0.08, y: 3.85, w: 1.48, h: 0.75, fontSize: 12, bold: true, color: C.background1, valign: 'middle', align: 'center' })
 })
 iconCircle(s, '🌱', 0.6, 0.55, 0.75, C.accent1)
-s.addNotes(`(4:30–5:00) ProFuturo nació para que el lugar donde nace una niña o un niño no decida sus oportunidades. Semilla lleva esa idea a la era de la IA: un tutor ético, sin conexión, que da pistas y no respuestas, y que enseña a pensar críticamente. Gracias.`)
+s.addNotes(`(4:30–5:00) ProFuturo nació para que el lugar donde nace una niña o un niño no decida sus oportunidades. Semilla lleva esa idea a la era de la IA: un tutor ético, sin conexión, que da pistas y no respuestas, que enseña a pensar críticamente y que hace visible el talento de cada estudiante. Gracias.`)
 
 pres.writeFile({ fileName: 'Semilla_Hack4Edu2026.pptx' }).then(async (f) => {
   await applyTheme(f, THEME)
