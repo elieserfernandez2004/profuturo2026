@@ -71,6 +71,20 @@ export interface Message {
   ts: number
 }
 
+/** Reto 20: evidencia observable de una habilidad (nunca una puntuación ni etiqueta). */
+export type Skill = 'creatividad' | 'logica' | 'comunicacion' | 'colaboracion' | 'problemas' | 'critico'
+export interface Evidence {
+  id: string
+  profileId: string
+  skill: Skill
+  source: string // actividad que la generó
+  detail: string // qué se observó, en palabras
+  by: 'actividad' | 'docente' | 'compañero'
+  ts: number
+  deviceId: string
+  synced: 0 | 1
+}
+
 export interface KV {
   key: string
   value: unknown
@@ -84,6 +98,7 @@ class SemillaDB extends Dexie {
   activities!: Table<Activity, string>
   messages!: Table<Message, string>
   kv!: Table<KV, string>
+  evidence!: Table<Evidence, string>
 
   constructor() {
     super('semilla')
@@ -95,6 +110,9 @@ class SemillaDB extends Dexie {
       activities: 'id, lessonId, approved, createdAt',
       messages: 'id, to, ts',
       kv: 'key',
+    })
+    this.version(2).stores({
+      evidence: 'id, profileId, skill, synced, ts',
     })
   }
 }

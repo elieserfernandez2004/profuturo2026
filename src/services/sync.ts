@@ -18,12 +18,13 @@ export const net = reactive({
 })
 
 export async function countPending() {
-  const [a, f, d] = await Promise.all([
+  const [a, f, d, e] = await Promise.all([
     db.attempts.where('synced').equals(0).count(),
     db.feedback.where('synced').equals(0).count(),
     db.detective.where('synced').equals(0).count(),
+    db.evidence.where('synced').equals(0).count(),
   ])
-  net.pending = a + f + d
+  net.pending = a + f + d + e
   return net.pending
 }
 
@@ -40,13 +41,15 @@ export async function syncNow(): Promise<string> {
       attempts: await db.attempts.where('synced').equals(0).toArray(),
       feedback: await db.feedback.where('synced').equals(0).toArray(),
       detective: await db.detective.where('synced').equals(0).toArray(),
+      evidence: await db.evidence.where('synced').equals(0).toArray(),
     }
     const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    await db.transaction('rw', db.attempts, db.feedback, db.detective, async () => {
+    await db.transaction('rw', [db.attempts, db.feedback, db.detective, db.evidence], async () => {
       await db.attempts.bulkUpdate(payload.attempts.map((r) => ({ key: r.id, changes: { synced: 1 as const } })))
       await db.feedback.bulkUpdate(payload.feedback.map((r) => ({ key: r.id, changes: { synced: 1 as const } })))
       await db.detective.bulkUpdate(payload.detective.map((r) => ({ key: r.id, changes: { synced: 1 as const } })))
+      await db.evidence.bulkUpdate(payload.evidence.map((r) => ({ key: r.id, changes: { synced: 1 as const } })))
     })
     net.lastSync = Date.now()
     await setKV('lastSync', net.lastSync)
@@ -70,6 +73,8 @@ export interface SyncPack {
   attempts: unknown[]
   feedback: unknown[]
   detective: unknown[]
+  evidence?: unknown[]
+  kv?: unknown[]
   activities?: unknown[]
   messages?: unknown[]
 }
@@ -85,6 +90,8 @@ export async function buildPack(includeTeacherContent = false): Promise<SyncPack
     attempts: await db.attempts.toArray(),
     feedback: await db.feedback.toArray(),
     detective: await db.detective.toArray(),
+    evidence: await db.evidence.toArray(),
+    kv: await db.kv.filter((r) => r.key.startsWith('interests:')).toArray(),
     ...(includeTeacherContent
       ? { activities: await db.activities.filter((a) => a.approved).toArray(), messages: await db.messages.toArray() }
       : {}),
@@ -117,12 +124,14 @@ export async function exportPack(includeTeacherContent = false) {
 export async function importPack(file: File): Promise<string> {
   const pack = JSON.parse(await file.text()) as SyncPack
   if (pack.format !== 'semilla-pack') throw new Error('Archivo no válido')
-  await db.transaction('rw', [db.profiles, db.attempts, db.feedback, db.detective, db.activities, db.messages], async () => {
+  await db.transaction('rw', [db.profiles, db.attempts, db.feedback, db.detective, db.activities, db.messages, db.evidence, db.kv], async () => {
     // ids únicos (uuid) → combinar varias tablets no duplica datos
     await db.profiles.bulkPut(pack.profiles as never[])
     await db.attempts.bulkPut(pack.attempts as never[])
     await db.feedback.bulkPut(pack.feedback as never[])
     await db.detective.bulkPut(pack.detective as never[])
+    if (pack.evidence) await db.evidence.bulkPut(pack.evidence as never[])
+    if (pack.kv) await db.kv.bulkPut(pack.kv as never[])
     if (pack.activities) await db.activities.bulkPut(pack.activities as never[])
     if (pack.messages) await db.messages.bulkPut(pack.messages as never[])
   })

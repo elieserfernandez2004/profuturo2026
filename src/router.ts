@@ -6,6 +6,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/student', component: () => import('./views/StudentHome.vue') },
   { path: '/lesson/:id', component: () => import('./views/LessonPage.vue') },
   { path: '/activity/:id', component: () => import('./views/ActivityPage.vue') },
+  { path: '/talents', component: () => import('./views/TalentPage.vue') },
   { path: '/detective', component: () => import('./views/DetectivePage.vue') },
   { path: '/limits', component: () => import('./views/AiLimitsPage.vue') },
   { path: '/teacher', component: () => import('./views/TeacherPage.vue') },

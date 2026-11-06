@@ -33,6 +33,18 @@
           </ion-card>
         </div>
 
+        <ion-card button style="margin-top: 12px" @click="$router.push('/talents')">
+          <ion-card-header>
+            <div style="display: flex; gap: 12px; align-items: center">
+              <div class="route-icon">🌟</div>
+              <div>
+                <ion-card-title style="font-size: 1.05rem">Mi jardín de talentos</ion-card-title>
+                <ion-card-subtitle>Acertijos, inventos, explicaciones y semillas para tu equipo. ¡Sin notas!</ion-card-subtitle>
+              </div>
+            </div>
+          </ion-card-header>
+        </ion-card>
+
         <div class="section-title">Aprender a usar la IA con cabeza</div>
         <div class="grid-cards">
           <ion-card button @click="$router.push('/detective')">

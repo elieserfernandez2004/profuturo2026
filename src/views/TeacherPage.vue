@@ -18,6 +18,7 @@
       <template v-else>
         <ion-segment v-model="tab" scrollable>
           <ion-segment-button value="panel"><ion-label>📊 Panel</ion-label></ion-segment-button>
+          <ion-segment-button value="talentos"><ion-label>🌟 Talentos</ion-label></ion-segment-button>
           <ion-segment-button value="actividades"><ion-label>📝 Actividades</ion-label></ion-segment-button>
           <ion-segment-button value="mensajes"><ion-label>📨 Mensajes</ion-label></ion-segment-button>
           <ion-segment-button value="sync"><ion-label>🔄 Sincronizar</ion-label></ion-segment-button>
@@ -72,6 +73,9 @@
             </ion-card-content>
           </ion-card>
         </template>
+
+        <!-- TALENTOS (Reto 20) -->
+        <teacher-talents v-if="tab === 'talentos'" />
 
         <!-- ACTIVIDADES -->
         <template v-if="tab === 'actividades'">
@@ -159,6 +163,7 @@ import {
   IonTextarea, IonSelect, IonSelectOption, IonSegment, IonSegmentButton, IonLabel, onIonViewWillEnter,
 } from '@ionic/vue'
 import AppHeader from '../components/AppHeader.vue'
+import TeacherTalents from '../components/TeacherTalents.vue'
 import { LESSONS, getLesson } from '../data/lessons'
 import { db, uid, getKV, setKV, type Activity, type Profile } from '../db'
 import { session, loadSession, checkPin } from '../services/session'
