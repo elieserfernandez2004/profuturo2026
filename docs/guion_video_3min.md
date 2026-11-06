@@ -12,7 +12,7 @@ Antes de grabar: modelo de 3B ya descargado, dos perfiles creados ("Estrella" y 
 | 1:25–1:45 | Detective de IA → "¿Verdad?" → "2/7 + 3/7 = 5/14" → Falso → explicación. | "Con el Detective de IA aprenden haciendo: descubren alucinaciones, sesgos y fuentes inventadas." |
 | 1:45–2:20 | **Mi jardín de talentos** → Acertijo de patrones → Inventa (escribir 4 usos de una botella) → Reconoce (regalar una semilla a "Luna" por "tuvo una idea muy original") → volver al Jardín con plantas brotando. | "Reto 20: que ningún talento pase desapercibido. Acertijos, inventos, explicaciones y reconocimiento entre compañeros hacen visible lo que las notas no muestran. El jardín solo crece y nunca se compara." |
 | 2:20–2:45 | Espacio docente (PIN) → pestaña **Talentos**: señales con su origen e ideas para personalizar → pestaña Panel: "Estrella necesita apoyo en Suma con igual denominador" → Sincronizar → Exportar paquete. | "La persona docente ve señales, no etiquetas: evidencias concretas, sin puntajes ni decisiones automáticas, e ideas para personalizar. También ve qué concepto necesita apoyo y reúne los datos de todas las tablets sin internet." |
-| 2:45–3:00 | Diapositiva 8 (cierre) | "Semilla: sin internet, datos en el dispositivo, pistas en vez de respuestas, pensamiento crítico y talentos visibles. Para que el lugar donde naces no decida cuánto aprendes." |
+| 2:45–3:00 | Diapositiva 9 (cierre) | "Semilla: sin internet, datos en el dispositivo, pistas en vez de respuestas, pensamiento crítico y talentos visibles. Para que el lugar donde naces no decida cuánto aprendes." |
 
 ## Consejos de grabación
 
