@@ -2,6 +2,8 @@
 
 **Hack4Edu 2026 · VII edición** · Modalidad **innovadora** · Retos ProFuturo 02 · 04 · 07 · 20
 
+**▶ App en vivo:** https://elieserfernandez2004.github.io/profuturo2026/ (abrir en Chrome Android → ⚙️ descargar modelo → instalar)
+
 > Un tutor socrático con IA que vive **dentro** del teléfono o la tablet: no necesita internet, no envía datos de niñas y niños a ningún servidor y enseña a usar la IA con pensamiento crítico.
 
 ## Retos que aborda
